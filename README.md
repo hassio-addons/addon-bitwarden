@@ -48,18 +48,18 @@ The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
 1. [Add our Hass.io add-ons repository][repository] to your Hass.io instance.
-2. Install the "Bitwarden RS" add-on.
-3. Start the "Bitwarden RS" add-on.
-4. Check the logs of the "Bitwarden RS" add-on to see if everything went
+1. Install the "Bitwarden RS" add-on.
+1. Start the "Bitwarden RS" add-on.
+1. Check the logs of the "Bitwarden RS" add-on to see if everything went
    well and to get the admin token/password.
-5. Click the "OPEN WEB UI" button to open Bitwarden RS.
-6. Add `/admin` to the URL to access the admin panel, e.g.,  
-   `http://hassio.local:7277/admin`  
-   Log in using the admin token you got in step 4.
-7. The admin/token in the logs is only shown until it is saved or changed.
+1. Click the "OPEN WEB UI" button to open Bitwarden RS.
+1. Add `/admin` to the URL to access the admin panel, e.g.,
+   `http://hassio.local:7277/admin`. Log in using the admin token you got
+   in step 4.
+1. The admin/token in the logs is only shown until it is saved or changed.
    Hit save in the admin panel to use the randomly generated password or
    change it to one of your choosing.
-8. Be sure to store your admin token somewhere safe.
+1. Be sure to store your admin token somewhere safe.
 
 **NOTE**: Do not add this repository to Hass.io, please use:
 `https://github.com/hassio-addons/repository`.
