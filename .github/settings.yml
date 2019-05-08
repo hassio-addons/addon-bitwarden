@@ -2,7 +2,7 @@
 repository:
   description: "Bitwarden RS - Community Hass.io Add-on for Home Assistant"
   homepage: https://addons.community
-  topics: bitwarden, password manager, passwords, hassio-addons, hassio, hass, home-assistant, homeassistant
+  topics: bitwarden, password-manager, passwords, hassio-addons, hassio, hass, home-assistant, homeassistant
   private: false
   has_issues: true
   has_projects: false
