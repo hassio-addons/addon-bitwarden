@@ -4,7 +4,7 @@ ARG BUILD_FROM=hassioaddons/ubuntu-base:3.1.1
 ###############################################################################
 ARG BITWARDEN_ARCH
 # hadolint ignore=DL3006
-FROM "mprasil/bitwarden:1.9.0${BITWARDEN_ARCH}" as bitwarden
+FROM "mprasil/bitwarden:1.9.1${BITWARDEN_ARCH}" as bitwarden
 
 ###############################################################################
 # Build the actual add-on.
