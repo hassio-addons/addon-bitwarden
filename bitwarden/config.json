@@ -21,7 +21,6 @@
     "7277/tcp": "Bitwarden Vault"
   },
   "map": [
-    "config",
     "ssl"
   ],
   "options": {
