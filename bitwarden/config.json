@@ -16,7 +16,7 @@
   "hassio_role": "default",
   "ports": {
     "7277/tcp": 7277,
-    "7278/tcp": 3012,
+    "7278/tcp": 7278,
   },
   "ports_description": {
     "7277/tcp": "Bitwarden Vault",
