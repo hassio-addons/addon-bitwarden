@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/ubuntu-base:4.0.1
+ARG BUILD_FROM=hassioaddons/ubuntu-base:4.0.2
 ###############################################################################
 # Get prebuild containers from Bitwarden RS
 ###############################################################################
