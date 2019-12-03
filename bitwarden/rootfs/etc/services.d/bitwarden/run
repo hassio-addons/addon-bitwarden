@@ -14,6 +14,8 @@ declare secret_key
 export DATA_FOLDER=/data
 export ROCKET_PORT=7277
 export ROCKET_WORKERS=2
+export WEBSOCKET_ENABLED=true
+export WEBSOCKET_PORT=7278
 
 # Set a random secret, to remove confusing warning from logs.
 secret_key=$(openssl rand -base64 32)
