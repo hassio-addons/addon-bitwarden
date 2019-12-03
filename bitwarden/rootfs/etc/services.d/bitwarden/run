@@ -7,6 +7,7 @@ declare admin_token
 declare certfile
 declare keyfile
 declare log_level
+declare port
 declare request_size_limit
 declare secret_key
 
@@ -14,8 +15,6 @@ declare secret_key
 export DATA_FOLDER=/data
 export ROCKET_PORT=7277
 export ROCKET_WORKERS=2
-export WEBSOCKET_ENABLED=true
-export WEBSOCKET_PORT=7278
 
 # Set a random secret, to remove confusing warning from logs.
 secret_key=$(openssl rand -base64 32)
@@ -80,6 +79,11 @@ if bashio::config.true 'ssl'; then
     keyfile=$(bashio::config 'keyfile')
     certfile=$(bashio::config 'certfile')
     export ROCKET_TLS="{certs=\"/ssl/${certfile}\",key=\"/ssl/${keyfile}\"}"
+fi
+
+port=$(bashio::addon.port 3012)
+if bashio::var.has_value "${port}"; then
+    export WEBSOCKET_ENABLED=true
 fi
 
 # Run the Bitwarden server
