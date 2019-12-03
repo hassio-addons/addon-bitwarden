@@ -11,9 +11,9 @@ variables:
   ADDON_ARMHF: "false"
   ADDON_I386: "false"
 
-  ADDON_AARCH64_BASE: "hassioaddons/ubuntu-base-aarch64:4.0.2"
-  ADDON_AMD64_BASE: "hassioaddons/ubuntu-base-amd64:4.0.2"
-  ADDON_ARMV7_BASE: "hassioaddons/ubuntu-base-armv7:4.0.2"
+  ADDON_AARCH64_BASE: "hassioaddons/debian-base-aarch64:2.0.0"
+  ADDON_AMD64_BASE: "hassioaddons/debian-base-amd64:2.0.0"
+  ADDON_ARMV7_BASE: "hassioaddons/debian-base-armv7:2.0.0"
 
 # Build overrides to supply a BITWARDEN_ARCH build argument
 build:aarch64:
