@@ -24,3 +24,10 @@ fi
 hassio_dns=$(bashio::dns.host)
 sed -i "s/%%hassio_dns%%/${hassio_dns}/g" /etc/nginx/includes/resolver.conf
 
+max_body_size="10M"
+# Increase body size to match config
+if bashio::config.has_value 'request_size_limit'; then
+    max_body_size=$(bashio::config 'request_size_limit')
+fi
+sed -i "s/%%max_body_size%%/${max_body_size}/g" \
+    /etc/nginx/includes/server_params.conf
