@@ -47,8 +47,8 @@ email, bank, and other important accounts. USE A PASSWORD MANAGER!
 The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
-1. [Add our Hass.io add-ons repository][repository] to your Hass.io instance.
-1. Install the "Bitwarden RS" add-on.
+1. Search for the "Bitwarden RS" add-on in the Hass.io add-on store and install
+   it.
 1. Start the "Bitwarden RS" add-on.
 1. Check the logs of the "Bitwarden RS" add-on to see if everything went
    well and to get the admin token/password.
@@ -60,9 +60,6 @@ comparison to installing any other Hass.io add-on.
    Hit save in the admin panel to use the randomly generated password or
    change it to one of your choosing.
 1. Be sure to store your admin token somewhere safe.
-
-**NOTE**: Do not add this repository to Hass.io, please use:
-`https://github.com/hassio-addons/repository`.
 
 ## Configuration
 
