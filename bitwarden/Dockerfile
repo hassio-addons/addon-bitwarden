@@ -29,9 +29,10 @@ RUN \
     && apt-get clean \
     && rm -f -r \
         /etc/nginx \
-        \
+    \
     && mkdir -p /var/log/nginx \
     && touch /var/log/nginx/error.log
+
 # Copy root filesystem
 COPY rootfs /
 
