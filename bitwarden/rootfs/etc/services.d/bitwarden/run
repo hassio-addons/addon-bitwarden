@@ -13,7 +13,7 @@ declare secret_key
 
 # Set defaults
 export DATA_FOLDER=/data
-export ROCKET_PORT=7277
+export ROCKET_PORT=80
 export ROCKET_WORKERS=2
 
 # Set a random secret, to remove confusing warning from logs.
@@ -74,17 +74,9 @@ if bashio::config.has_value 'request_size_limit'; then
     export ROCKET_LIMITS="{json=${request_size_limit}}"
 fi
 
-# Enable SSL
-if bashio::config.true 'ssl'; then
-    keyfile=$(bashio::config 'keyfile')
-    certfile=$(bashio::config 'certfile')
-    export ROCKET_TLS="{certs=\"/ssl/${certfile}\",key=\"/ssl/${keyfile}\"}"
-fi
-
-port=$(bashio::addon.port 3012)
-if bashio::var.has_value "${port}"; then
-    export WEBSOCKET_ENABLED=true
-fi
+# Always enable Websockets
+export WEBSOCKET_ENABLED=true
+export WEBSOCKET_PORT=8080
 
 # Run the Bitwarden server
 bashio::log.info 'Starting the Bitwarden RS server...'

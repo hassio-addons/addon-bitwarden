@@ -1,6 +1,9 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
 # Community Hass.io Add-ons: Bitwarden
-# Checks if SSL requirements are met.
+# Runs the Nginx daemon
 # ==============================================================================
-bashio::config.require.ssl
+bashio::net.wait_for 80
+bashio::log.info "Starting NGinx..."
+
+exec nginx
