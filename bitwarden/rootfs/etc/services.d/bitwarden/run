@@ -4,10 +4,7 @@
 # Runs the Bitwarden RS server
 # ==============================================================================
 declare admin_token
-declare certfile
-declare keyfile
 declare log_level
-declare port
 declare request_size_limit
 declare secret_key
 

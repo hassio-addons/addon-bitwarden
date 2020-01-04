@@ -21,6 +21,7 @@ COPY --from=bitwarden /Rocket.toml /opt/Rocket.toml
 COPY --from=bitwarden /web-vault /opt/web-vault
 
 # add Nginx
+# hadolint ignore=DL3009
 RUN \
     apt-get update \
     \
