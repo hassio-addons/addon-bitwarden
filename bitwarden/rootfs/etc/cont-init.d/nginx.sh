@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Community Hass.io Add-ons: Bitwarden
+# Community Home Assistant Add-on: Bitwarden
 # This file configures nginx
 # ==============================================================================
 declare certfile

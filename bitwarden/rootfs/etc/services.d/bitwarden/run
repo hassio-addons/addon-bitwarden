@@ -1,6 +1,6 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# Community Hass.io Add-ons: Bitwarden
+# Community Home Assistant Add-on: Bitwarden
 # Runs the Bitwarden RS server
 # ==============================================================================
 declare admin_token
