@@ -1,6 +1,6 @@
 ---
 repository:
-  description: "Bitwarden RS - Community Home Assistant Add-ons"
+  description: "Bitwarden RS - Home Assistant Community Add-ons"
   homepage: https://addons.community
   topics: bitwarden, password-manager, passwords, addon, addons, home-assistant, homeassistant
   private: false
