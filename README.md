@@ -55,7 +55,7 @@ comparison to installing any other Home Assistant add-on.
 1. Click the "OPEN WEB UI" button to open Bitwarden RS.
 1. Add `/admin` to the URL to access the admin panel, e.g.,
    `http://hassio.local:7277/admin`. Log in using the admin token you got
-   in step 4.
+   in step 3.
 1. The admin/token in the logs is only shown until it is saved or changed.
    Hit save in the admin panel to use the randomly generated password or
    change it to one of your choosing.
