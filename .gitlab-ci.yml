@@ -6,14 +6,12 @@ variables:
   ADDON_SLUG: "bitwarden"
   ADDON_TARGET: "bitwarden"
 
-  ADDON_LEGACY_TAGS: "true"
-
   ADDON_ARMHF: "false"
   ADDON_I386: "false"
 
-  ADDON_AARCH64_BASE: "hassioaddons/debian-base-aarch64:3.0.1"
-  ADDON_AMD64_BASE: "hassioaddons/debian-base-amd64:3.0.1"
-  ADDON_ARMV7_BASE: "hassioaddons/debian-base-armv7:3.0.1"
+  ADDON_AARCH64_BASE: "hassioaddons/debian-base-aarch64:3.1.0"
+  ADDON_AMD64_BASE: "hassioaddons/debian-base-amd64:3.1.0"
+  ADDON_ARMV7_BASE: "hassioaddons/debian-base-armv7:3.1.0"
 
 # Build overrides to supply a BITWARDEN_ARCH build argument
 build:aarch64:
