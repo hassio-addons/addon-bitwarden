@@ -46,17 +46,19 @@ ARG BUILD_VERSION
 # Labels
 LABEL \
     io.hass.name="Bitwarden RS" \
-    io.hass.description="Open source password management solution." \
+    io.hass.description="Open source password management solution" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="Franck Nijhof <frenck@addons.community>" \
-    org.label-schema.description="Open source password management solution." \
-    org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.name="Bitwarden RS" \
-    org.label-schema.schema-version="1.0" \
-    org.label-schema.url="https://community.home-assistant.io/t/home-assistant-community-add-on-bitwarden-rs/115573?u=frenck" \
-    org.label-schema.usage="https://github.com/hassio-addons/addon-bitwarden/tree/master/README.md" \
-    org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://github.com/hassio-addons/addon-bitwarden" \
-    org.label-schema.vendor="Home Assistant Community Add-ons"
+    org.opencontainers.image.title="Bitwarden RS" \
+    org.opencontainers.image.description="Open source password management solution" \
+    org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
+    org.opencontainers.image.authors="Franck Nijhof <frenck@addons.community>" \
+    org.opencontainers.image.licenses="MIT" \
+    org.opencontainers.image.url="https://addons.community" \
+    org.opencontainers.image.source="https://github.com/hassio-addons/addon-bitwarden" \
+    org.opencontainers.image.documentation="https://github.com/hassio-addons/addon-bitwarden/blob/master/README.md" \
+    org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.revision=${BUILD_REF} \
+    org.opencontainers.image.version=${BUILD_VERSION}
