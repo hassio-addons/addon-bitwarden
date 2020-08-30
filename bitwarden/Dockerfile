@@ -2,8 +2,9 @@ ARG BUILD_FROM=hassioaddons/debian-base:3.2.1
 ###############################################################################
 # Get prebuild containers from Bitwarden RS
 ###############################################################################
+ARG BITWARDEN_PLATFORM
 # hadolint ignore=DL3006
-FROM "bitwardenrs/server:1.16.0" as bitwarden
+FROM --platform=${BITWARDEN_PLATFORM} "bitwardenrs/server:1.16.0" as bitwarden
 
 ###############################################################################
 # Build the actual add-on.
