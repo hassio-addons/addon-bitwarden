@@ -4,7 +4,7 @@ ARG BUILD_FROM=hassioaddons/debian-base:3.2.1
 ###############################################################################
 ARG BITWARDEN_PLATFORM
 # hadolint ignore=DL3006
-FROM --platform=${BITWARDEN_PLATFORM} "bitwardenrs/server:1.16.0" as bitwarden
+FROM --platform=${BITWARDEN_PLATFORM} "bitwardenrs/server:1.17.0" as bitwarden
 
 ###############################################################################
 # Build the actual add-on.
