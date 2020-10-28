@@ -97,6 +97,11 @@ especially if running with limited resources.
 
 To set the limit, you can use this setting: 10MB would be `10485760`.
 
+### Admin access
+
+You can configure more parameters like the hostname, the smtp settings, etc. from the Admin center.
+To access it, add /admin in the url and use the generated token that you can find in the log of the plugin.
+
 ## Known issues and limitations
 
 - This add-on cannot support Ingress at this time due to technical limitations
