@@ -4,7 +4,7 @@ ARG BUILD_FROM=hassioaddons/debian-base:3.2.1
 ###############################################################################
 ARG BITWARDEN_ARCH
 # hadolint ignore=DL3006
-FROM "bitwardenrs/server:1.16.0${BITWARDEN_ARCH}" as bitwarden
+FROM "bitwardenrs/server:1.17.0${BITWARDEN_ARCH}" as bitwarden
 
 ###############################################################################
 # Build the actual add-on.
@@ -26,7 +26,7 @@ RUN \
     apt-get update \
     \
     && apt-get install -y --no-install-recommends \
-        nginx=1.14.2-2+deb10u1 \
+        nginx=1.14.2-2+deb10u3 libpq5 libmariadb3 \
     && apt-get clean \
     && rm -f -r \
         /etc/nginx \
