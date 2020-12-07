@@ -4,7 +4,7 @@ ARG BUILD_FROM=hassioaddons/debian-base:3.2.1
 ###############################################################################
 ARG BITWARDEN_ARCH
 # hadolint ignore=DL3006
-FROM "bitwardenrs/server:1.16.0${BITWARDEN_ARCH}" as bitwarden
+FROM "bitwardenrs/server:1.17.0${BITWARDEN_ARCH}" as bitwarden
 
 ###############################################################################
 # Build the actual add-on.
