@@ -10,7 +10,7 @@
 ![Supports armv7 Architecture][armv7-shield]
 ![Supports i386 Architecture][i386-shield]
 
-[![GitLab CI][gitlabci-shield]][gitlabci]
+[![Github Actions][github-actions-shield]][github-actions]
 ![Project Maintenance][maintenance-shield]
 [![GitHub Activity][commits-shield]][commits]
 
@@ -113,19 +113,19 @@ SOFTWARE.
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [bitwarden-rs]: https://github.com/dani-garcia/bitwarden_rs
 [commits-shield]: https://img.shields.io/github/commit-activity/y/hassio-addons/addon-bitwarden.svg
-[commits]: https://github.com/hassio-addons/addon-bitwarden/commits/master
+[commits]: https://github.com/hassio-addons/addon-bitwarden/commits/main
 [contributors]: https://github.com/hassio-addons/addon-bitwarden/graphs/contributors
 [discord-ha]: https://discord.gg/c5DvZ4e
 [discord-shield]: https://img.shields.io/discord/478094546522079232.svg
 [discord]: https://discord.me/hassioaddons
-[docs]: https://github.com/hassio-addons/addon-bitwarden/blob/master/bitwarden/DOCS.md
+[docs]: https://github.com/hassio-addons/addon-bitwarden/blob/main/bitwarden/DOCS.md
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [forum]: https://community.home-assistant.io/t/home-assistant-community-add-on-bitwarden-rs/115573?u=frenck
 [frenck]: https://github.com/frenck
 [github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
 [github-sponsors]: https://github.com/sponsors/frenck
-[gitlabci-shield]: https://gitlab.com/hassio-addons/addon-bitwarden/badges/master/pipeline.svg
-[gitlabci]: https://gitlab.com/hassio-addons/addon-bitwarden/pipelines
+[github-actions-shield]: https://github.com/hassio-addons/addon-example/workflows/CI/badge.svg
+[github-actions]: https://github.com/hassio-addons/addon-example/actions
 [i386-shield]: https://img.shields.io/badge/i386-no-red.svg
 [issue]: https://github.com/hassio-addons/addon-bitwarden/issues
 [license-shield]: https://img.shields.io/github/license/hassio-addons/addon-bitwarden.svg
