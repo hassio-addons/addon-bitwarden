@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/debian-base:3.2.1
+ARG BUILD_FROM=hassioaddons/debian-base:4.0.0
 ###############################################################################
 # Get prebuild containers from Bitwarden RS
 ###############################################################################
