@@ -26,7 +26,7 @@ RUN \
     apt-get update \
     \
     && apt-get install -y --no-install-recommends \
-        nginx=1.14.2-2+deb10u1 \
+        nginx=1.14.2-2+deb10u3 \
     && apt-get clean \
     && rm -f -r \
         /etc/nginx \
