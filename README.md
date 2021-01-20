@@ -124,8 +124,8 @@ SOFTWARE.
 [frenck]: https://github.com/frenck
 [github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
 [github-sponsors]: https://github.com/sponsors/frenck
-[github-actions-shield]: https://github.com/hassio-addons/addon-example/workflows/CI/badge.svg
-[github-actions]: https://github.com/hassio-addons/addon-example/actions
+[github-actions-shield]: https://github.com/hassio-addons/addon-bitwarden/workflows/CI/badge.svg
+[github-actions]: https://github.com/hassio-addons/addon-bitwarden/actions
 [i386-shield]: https://img.shields.io/badge/i386-no-red.svg
 [issue]: https://github.com/hassio-addons/addon-bitwarden/issues
 [license-shield]: https://img.shields.io/github/license/hassio-addons/addon-bitwarden.svg
