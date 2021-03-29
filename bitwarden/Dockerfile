@@ -2,7 +2,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.1.2
 ###############################################################################
 # Get prebuild containers from Bitwarden RS
 ###############################################################################
-FROM "bitwardenrs/server:1.19.0" as bitwarden
+FROM "bitwardenrs/server:1.20.0" as bitwarden
 
 ###############################################################################
 # Build the actual add-on.
