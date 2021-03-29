@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.1.2
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:4.1.3
 ###############################################################################
 # Get prebuild containers from Bitwarden RS
 ###############################################################################
