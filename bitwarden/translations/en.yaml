@@ -25,4 +25,4 @@ configuration:
       Bitwarden RS. This might be needed to support larger imports.
       The default is 10485760, which is 10MB.
 network:
-  7277/tcp: Web interface (Not required for Ingress)
+  7277/tcp: Web interface
