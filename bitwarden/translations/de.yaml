@@ -1,0 +1,26 @@
+  log_level:
+    name: Log level
+    description: >-
+      Steuert die Ebene der Protokolldetails, die das Add-on bereitstellt.
+  ssl:
+    name: SSL
+    description: >-
+      Aktiviert/Deaktiviert SSL (HTTPS) auf der Weboberfläche.
+  certfile:
+    name: Certificate file
+    description: >-
+      Die Zertifikatsdatei, die für SSL verwendet werden soll. Beachten Sie, dass diese Datei
+      im Ordner /ssl/ vorhanden sein muss.
+  keyfile:
+    name: Private key file
+    description: >-
+      Die private Schlüsseldatei(Private key file), die für SSL verwendet werden soll. Beachten Sie, dass diese Datei
+      im Ordner /ssl/ vorhanden sein muss.
+  request_size_limit:
+    name: Size limit of HTTP requests
+    description: >-
+      Setzen Sie optional das Größenlimit für HTTP-Anfragen an die API von
+      Bitwarden RS. Dies kann erforderlich sein, um größere Importe zu unterstützen.
+      Der Standardwert ist 10485760, was 10 MB entspricht.
+network:
+  7277/tcp: Weboberfläche
