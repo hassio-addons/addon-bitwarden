@@ -1,5 +1,5 @@
 {
-  "name": "Bitwarden RS",
+  "name": "Bitwarden (Vaultwarden)",
   "version": "dev",
   "slug": "bitwarden",
   "description": "Open source password management solution",
@@ -12,7 +12,7 @@
     "7277/tcp": 7277
   },
   "ports_description": {
-    "7277/tcp": "Bitwarden Vault"
+    "7277/tcp": "Vaultwarden Web interface"
   },
   "map": ["ssl"],
   "options": {
