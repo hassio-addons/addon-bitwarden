@@ -1,4 +1,4 @@
-# Home Assistant Community Add-on: Bitwarden RS
+# Home Assistant Community Add-on: Bitwarden (Vaultwarden)
 
 [![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
@@ -32,7 +32,7 @@ The Bitwarden platform offers a variety of client applications including
 a web interface, desktop applications, browser extensions and mobile apps.
 
 This add-on is based upon the lightweight and opensource
-[Bitwarden RS][bitwarden-rs] implementation, allowing you to self-host
+[Vaultwarden][vaultwarden] implementation, allowing you to self-host
 this amazing password manager.
 
 Password theft is a serious problem. The websites and apps that you use are
@@ -65,7 +65,7 @@ This is an active open-source project. We are always open to people who want to
 use the code or contribute to it.
 
 We have set up a separate document containing our
-[contribution guidelines](CONTRIBUTING.md).
+[contribution guidelines](.github/CONTRIBUTING.md).
 
 Thank you for being involved! :heart_eyes:
 
@@ -111,7 +111,6 @@ SOFTWARE.
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-no-red.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
-[bitwarden-rs]: https://github.com/dani-garcia/bitwarden_rs
 [commits-shield]: https://img.shields.io/github/commit-activity/y/hassio-addons/addon-bitwarden.svg
 [commits]: https://github.com/hassio-addons/addon-bitwarden/commits/main
 [contributors]: https://github.com/hassio-addons/addon-bitwarden/graphs/contributors
@@ -122,10 +121,10 @@ SOFTWARE.
 [forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
 [forum]: https://community.home-assistant.io/t/home-assistant-community-add-on-bitwarden-rs/115573?u=frenck
 [frenck]: https://github.com/frenck
-[github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
-[github-sponsors]: https://github.com/sponsors/frenck
 [github-actions-shield]: https://github.com/hassio-addons/addon-bitwarden/workflows/CI/badge.svg
 [github-actions]: https://github.com/hassio-addons/addon-bitwarden/actions
+[github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
+[github-sponsors]: https://github.com/sponsors/frenck
 [i386-shield]: https://img.shields.io/badge/i386-no-red.svg
 [issue]: https://github.com/hassio-addons/addon-bitwarden/issues
 [license-shield]: https://img.shields.io/github/license/hassio-addons/addon-bitwarden.svg
@@ -137,3 +136,4 @@ SOFTWARE.
 [releases-shield]: https://img.shields.io/github/release/hassio-addons/addon-bitwarden.svg
 [releases]: https://github.com/hassio-addons/addon-bitwarden/releases
 [repository]: https://github.com/hassio-addons/repository
+[vaultwarden]: https://github.com/dani-garcia/vaultwarden
