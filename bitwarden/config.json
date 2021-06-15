@@ -13,12 +13,10 @@
   "init": false,
   "arch": ["aarch64", "amd64", "armv7"],
   "ports": {
-    "7277/tcp": null,
-    "7278/tcp": null
+    "7277/tcp": null
   },
   "ports_description": {
-    "7277/tcp": "Vaultwarden HTTPS Web interface (not required for Ingress)",
-    "7278/tcp": "Vaultwarden HTTP Web interface (not required for Ingress)"
+    "7277/tcp": "Vaultwarden Web interface (not required for Ingress)",
   },
   "map": ["ssl"],
   "options": {
