@@ -1,4 +1,4 @@
-# Home Assistant Community Add-on: Bitwarden (Vaultwarden)
+# Home Assistant Community Add-on: Vaultwarden (Bitwarden)
 
 [![GitHub Release][releases-shield]][releases]
 ![Project Stage][project-stage-shield]
