@@ -4,7 +4,7 @@ version: dev
 slug: bitwarden
 description: Open source password management solution
 url: https://github.com/hassio-addons/addon-bitwarden
-webui: '[PROTO:ssl]://[HOST]:[PORT:7277]'
+webui: "[PROTO:ssl]://[HOST]:[PORT:7277]"
 init: false
 arch:
   - aarch64
