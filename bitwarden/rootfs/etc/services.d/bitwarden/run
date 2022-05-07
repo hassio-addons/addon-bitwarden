@@ -75,6 +75,11 @@ fi
 export WEBSOCKET_ENABLED=true
 export WEBSOCKET_PORT=8080
 
+# Set domain
+if bashio::config.has_value 'domain'; then
+    export DOMAIN=$(bashio::config 'domain')
+fi
+
 # Run the Bitwarden server
 bashio::log.info 'Starting the Vaultwarden server...'
 cd /opt || bashio::exit.nok
