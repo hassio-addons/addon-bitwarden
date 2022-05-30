@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:5.3.0
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:5.3.1
 ###############################################################################
 # Get prebuild containers from Vaultwarden
 ###############################################################################
