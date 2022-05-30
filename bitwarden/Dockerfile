@@ -15,7 +15,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Get the Bitwarden from official images
 COPY --from=vaultwarden /vaultwarden /opt/vaultwarden
-COPY --from=vaultwarden /Rocket.toml /opt/Rocket.toml
 COPY --from=vaultwarden /web-vault /opt/web-vault
 
 # add Nginx
