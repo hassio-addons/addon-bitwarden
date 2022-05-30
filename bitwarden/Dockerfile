@@ -2,7 +2,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base/amd64:5.3.1
 ###############################################################################
 # Get prebuild containers from Vaultwarden
 ###############################################################################
-FROM "vaultwarden/server:1.24.0" as vaultwarden
+FROM "vaultwarden/server:1.25.0" as vaultwarden
 
 ###############################################################################
 # Build the actual add-on.
@@ -15,7 +15,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Get the Bitwarden from official images
 COPY --from=vaultwarden /vaultwarden /opt/vaultwarden
-COPY --from=vaultwarden /Rocket.toml /opt/Rocket.toml
 COPY --from=vaultwarden /web-vault /opt/web-vault
 
 # add Nginx
