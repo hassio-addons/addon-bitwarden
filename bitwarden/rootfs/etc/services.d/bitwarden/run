@@ -1,6 +1,6 @@
-#!/usr/bin/with-contenv bashio
+#!/command/with-contenv bashio
 # ==============================================================================
-# Home Assistant Community Add-on: Bitwarden
+# Home Assistant Community Add-on: Vaultwarden
 # Runs the Vaultwarden server
 # ==============================================================================
 declare admin_token
