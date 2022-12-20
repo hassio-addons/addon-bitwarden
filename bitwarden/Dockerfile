@@ -1,4 +1,4 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.1.3
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:6.2.0
 ###############################################################################
 # Get prebuild containers from Vaultwarden
 ###############################################################################
@@ -23,9 +23,9 @@ RUN \
     apt-get update \
     \
     && apt-get install -y --no-install-recommends \
-        libmariadb-dev-compat=1:10.5.15-0+deb11u1 \
+        libmariadb-dev-compat=1:10.5.18-0+deb11u1 \
         libpq5=13.7-0+deb11u1 \
-        nginx=1.18.0-6.1+deb11u2 \
+        nginx=1.18.0-6.1+deb11u3 \
         sqlite3=3.34.1-3 \
     && apt-get clean \
     && rm -f -r \
