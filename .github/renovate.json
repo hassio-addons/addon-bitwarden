@@ -23,7 +23,7 @@
       ],
       "versioningTemplate": "deb",
       "datasourceTemplate": "repology",
-      "depNameTemplate": "debian_11/{{{replace 'openssh-client' 'openssh' package}}}"
+      "depNameTemplate": "debian_11/{{{replace 'libpq5' 'postgresql-13' package}}}"
     }
   ],
   "packageRules": [
