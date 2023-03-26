@@ -24,6 +24,13 @@
       "versioningTemplate": "deb",
       "datasourceTemplate": "repology",
       "depNameTemplate": "debian_11/{{{replace 'libpq5' 'postgresql-13' package}}}"
+    },
+    {
+      "fileMatch": ["/Dockerfile$"],
+      "matchStringsStrategy": "any",
+      "matchStrings": ["FROM \"vaultwarden/server:(?<currentValue>.*?)\"\\s+"],
+      "depNameTemplate": "vaultwarden/server",
+      "datasourceTemplate": "docker"
     }
   ],
   "packageRules": [
