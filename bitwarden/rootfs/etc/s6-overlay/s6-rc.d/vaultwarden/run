@@ -72,10 +72,6 @@ if bashio::config.has_value 'request_size_limit'; then
     export ROCKET_LIMITS="{json=${request_size_limit}}"
 fi
 
-# Always enable Websockets
-export WEBSOCKET_ENABLED=true
-export WEBSOCKET_PORT=8080
-
 # Run the Bitwarden server
 bashio::log.info 'Starting the Vaultwarden server...'
 cd /opt || bashio::exit.nok
