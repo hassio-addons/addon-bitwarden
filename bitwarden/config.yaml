@@ -11,6 +11,9 @@ arch:
   - aarch64
   - amd64
   - armv7
+ingress: true
+ingress_port: 7277
+ingress_stream: true
 ports:
   7277/tcp: 7277
 ports_description:
