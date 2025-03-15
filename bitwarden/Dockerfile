@@ -23,7 +23,7 @@ RUN \
     apt-get update \
     \
     && apt-get install -y --no-install-recommends \
-        libmariadb-dev-compat=1:10.11.6-0+deb12u1 \
+        libmariadb-dev-compat=1:10.11.11-0+deb12u1 \
         libpq5=15.10-0+deb12u1 \
         nginx=1.22.1-9 \
         sqlite3=3.40.1-2+deb12u1 \
