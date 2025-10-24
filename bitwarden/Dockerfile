@@ -1,8 +1,8 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:7.8.3
+ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:8.1.4
 ###############################################################################
 # Get prebuild containers from Vaultwarden
 ###############################################################################
-FROM "vaultwarden/server:1.34.3" as vaultwarden
+FROM "vaultwarden/server:1.34.3" AS vaultwarden
 
 ###############################################################################
 # Build the actual add-on.
@@ -23,10 +23,10 @@ RUN \
     apt-get update \
     \
     && apt-get install -y --no-install-recommends \
-        libmariadb-dev-compat=1:10.11.14-0+deb12u2 \
-        libpq5=15.10-0+deb12u1 \
-        nginx=1.22.1-9+deb12u3 \
-        sqlite3=3.40.1-2+deb12u2 \
+        libmariadb-dev-compat=1:11.8.3-0+deb13u1 \
+        libpq5=17.6-0+deb13u1 \
+        nginx=1.26.3-3+deb13u1 \
+        sqlite3=3.46.1-7 \
     && apt-get clean \
     && rm -f -r \
         /etc/nginx \
