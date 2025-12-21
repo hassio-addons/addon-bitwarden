@@ -72,9 +72,14 @@ if bashio::config.has_value 'request_size_limit'; then
     export ROCKET_LIMITS="{json=${request_size_limit}}"
 fi
 
-# Start script to set env var
-chmod +x /etc/s6-overlay/s6-rc.d/vaultwarden/00-global_var.sh
-/etc/s6-overlay/s6-rc.d/vaultwarden/00-global_var.sh
+# Set environement variable
+echo "# Vaultwarden Configuration File\n## Vaultwarden expects for this file to be named ".env" and located\n## in the current working directory." > /opt/.env
+while IFS= read -r obj; do
+    name=$(echo "$obj" | jq -r '.name')
+    value=$(echo "$obj" | jq -r '.value')
+
+    echo "${name}"="\"${value}"\" >> /opt/.env
+done < <(jq -c '.env_vars[]' "/data/options.json")
 
 # Run the Bitwarden server
 bashio::log.info 'Starting the Vaultwarden server...'
