@@ -72,6 +72,10 @@ if bashio::config.has_value 'request_size_limit'; then
     export ROCKET_LIMITS="{json=${request_size_limit}}"
 fi
 
+# Start script to set env var
+chmod +x /etc/s6-overlay/s6-rc.d/vaultwarden/00-global_var.sh
+/etc/s6-overlay/s6-rc.d/vaultwarden/00-global_var.sh
+
 # Run the Bitwarden server
 bashio::log.info 'Starting the Vaultwarden server...'
 cd /opt || bashio::exit.nok
