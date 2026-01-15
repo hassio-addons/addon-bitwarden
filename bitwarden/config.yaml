@@ -19,9 +19,13 @@ options:
   ssl: true
   certfile: fullchain.pem
   keyfile: privkey.pem
+  env_vars: []
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   ssl: bool
   certfile: str
   keyfile: str
   request_size_limit: int?
+  env_vars:
+    - name: match(^[A-Za-z0-9_]+$)
+      value: str?
