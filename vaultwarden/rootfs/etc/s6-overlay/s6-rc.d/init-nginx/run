@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: Vaultwarden
+# Home Assistant Community App: Vaultwarden
 # This file configures NGINX
 # ==============================================================================
 declare certfile

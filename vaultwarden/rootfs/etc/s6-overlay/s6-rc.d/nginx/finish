@@ -1,14 +1,13 @@
 #!/command/with-contenv bashio
-# shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: Vaultwarden
-# Take down the S6 supervision tree when the server fails
+# Home Assistant Community App: Vaultwarden
+# Take down the S6 supervision tree when Nginx fails
 # ==============================================================================
 declare exit_code
 readonly exit_code_container=$(</run/s6-linux-init-container-results/exitcode)
 readonly exit_code_service="${1}"
 readonly exit_code_signal="${2}"
-readonly service="Vaultwarden"
+readonly service="NGINX"
 
 bashio::log.info \
   "Service ${service} exited with code ${exit_code_service}" \

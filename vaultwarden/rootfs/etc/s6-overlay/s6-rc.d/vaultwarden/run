@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: Vaultwarden
+# Home Assistant Community App: Vaultwarden
 # Runs the Vaultwarden server
 # ==============================================================================
 declare admin_token
@@ -61,7 +61,7 @@ if ! bashio::fs.file_exists '/data/config.json'; then
     bashio::log.info "Be sure to change it in the admin panel, as soon as possible."
     bashio::log.info
     bashio::log.info "After you have changed ANY setting in the admin panel,"
-    bashio::log.info "the add-on will NOT generate a new token on each start"
+    bashio::log.info "the app will NOT generate a new token on each start"
     bashio::log.info "and stops showing this message."
     bashio::log.info
 fi
@@ -72,7 +72,7 @@ if bashio::config.has_value 'request_size_limit'; then
     export ROCKET_LIMITS="{json=${request_size_limit}}"
 fi
 
-# Run the Bitwarden server
+# Run the Vaultwarden server
 bashio::log.info 'Starting the Vaultwarden server...'
 cd /opt || bashio::exit.nok
 exec ./vaultwarden
