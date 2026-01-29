@@ -1,11 +1,11 @@
 ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.2.0
 ###############################################################################
-# Get prebuild containers from Vaultwarden
+# Get prebuilt containers from Vaultwarden
 ###############################################################################
 FROM "vaultwarden/server:1.35.2" AS vaultwarden
 
 ###############################################################################
-# Build the actual add-on.
+# Build the actual app.
 ###############################################################################
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
@@ -13,7 +13,7 @@ FROM ${BUILD_FROM}
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Get the Bitwarden from official images
+# Get the Vaultwarden from official images
 COPY --from=vaultwarden /vaultwarden /opt/vaultwarden
 COPY --from=vaultwarden /web-vault /opt/web-vault
 
@@ -53,13 +53,13 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="Franck Nijhof <frenck@addons.community>" \
+    maintainer="Franck Nijhof <opensource@frenck.dev>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Home Assistant Community Add-ons" \
-    org.opencontainers.image.authors="Franck Nijhof <frenck@addons.community>" \
+    org.opencontainers.image.vendor="Home Assistant Community Apps" \
+    org.opencontainers.image.authors="Franck Nijhof <opensource@frenck.dev>" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.url="https://addons.community" \
+    org.opencontainers.image.url="https://frenck.dev/home-assistant-apps" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
