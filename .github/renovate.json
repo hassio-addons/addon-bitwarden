@@ -25,7 +25,7 @@
       ],
       "versioningTemplate": "deb",
       "datasourceTemplate": "repology",
-      "depNameTemplate": "debian_12/{{{replace 'libpq5' 'postgresql-13' package}}}"
+      "depNameTemplate": "debian_13/{{{replace 'libpq5' 'postgresql-13' package}}}"
     },
     {
       "customType": "regex",
