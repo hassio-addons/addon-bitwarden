@@ -1,5 +1,6 @@
 server {
     listen 7277 default_server ssl;
+    listen [::]:7277 default_server ssl;
 
     include /etc/nginx/includes/server_params.conf;
     include /etc/nginx/includes/ssl_params.conf;
