@@ -2,7 +2,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.2.0
 ###############################################################################
 # Get prebuilt containers from Vaultwarden
 ###############################################################################
-FROM "vaultwarden/server:1.35.2" AS vaultwarden
+FROM "vaultwarden/server:1.35.3" AS vaultwarden
 
 ###############################################################################
 # Build the actual app.
@@ -25,7 +25,7 @@ RUN \
     && apt-get install -y --no-install-recommends \
         libmariadb-dev-compat=1:11.8.3-0+deb13u1 \
         libpq5=17.7-0+deb13u1 \
-        nginx=1.26.3-3+deb13u1 \
+        nginx=1.26.3-3+deb13u2 \
         sqlite3=3.46.1-7 \
     && apt-get clean \
     && rm -f -r \
