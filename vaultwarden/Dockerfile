@@ -2,7 +2,7 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/debian-base:9.3.0
 ###############################################################################
 # Get prebuilt containers from Vaultwarden
 ###############################################################################
-FROM "vaultwarden/server:1.35.8" AS vaultwarden
+FROM "vaultwarden/server:1.36.0" AS vaultwarden
 
 ###############################################################################
 # Build the actual app.
