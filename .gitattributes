@@ -1,0 +1,9 @@
+# Force LF line endings on checkout for all text files.
+# The rootfs is copied into a Linux container image; CRLF endings break
+# s6-overlay service files and bash scripts.
+* text=auto eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.ico binary
