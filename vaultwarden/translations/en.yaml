@@ -24,5 +24,65 @@ configuration:
       Optionally set the size limit of HTTP requests on the API of
       Vaultwarden. This might be needed to support larger imports.
       The default is 10485760, which is 10MB.
+  domain:
+    name: Domain
+    description: >-
+      The public URL on which this Vaultwarden instance is reachable,
+      e.g., https://vaultwarden.example.com. Required when SSO is enabled,
+      as it is used to build the OpenID Connect redirect URL.
+  sso_enabled:
+    name: SSO enabled
+    description: >-
+      Enables/Disables single sign-on via OpenID Connect (e.g., Authentik,
+      Keycloak, Authelia, Google, or any other OIDC provider).
+  sso_authority:
+    name: SSO authority
+    description: >-
+      The OpenID Connect issuer URL of your identity provider. For
+      Authentik this looks like
+      https://authentik.example.com/application/o/<application_slug>/.
+  sso_client_id:
+    name: SSO client ID
+    description: >-
+      The OAuth2/OpenID Connect client ID from your identity provider.
+  sso_client_secret:
+    name: SSO client secret
+    description: >-
+      The OAuth2/OpenID Connect client secret from your identity provider.
+  sso_scopes:
+    name: SSO scopes
+    description: >-
+      The OpenID Connect scopes to request. Defaults to
+      "email profile". Add "offline_access" if your provider issues
+      refresh tokens via that scope (Authentik does).
+  sso_allow_unknown_email_verification:
+    name: SSO allow unknown email verification
+    description: >-
+      Allow logins from identity providers that do not report an
+      email_verified claim. Only enable this if you trust your provider.
+      Defaults to false.
+  sso_client_cache_expiration:
+    name: SSO client cache expiration
+    description: >-
+      Cache the identity provider discovery metadata for this many
+      seconds. Set to 0 to disable caching. Defaults to 0.
+  sso_only:
+    name: SSO only
+    description: >-
+      Disable email and master password login and require SSO for all
+      users. Make sure SSO works before enabling this! Defaults to false.
+  sso_signups_match_email:
+    name: SSO signups match email
+    description: >-
+      On first SSO login, link the SSO identity to an existing
+      Vaultwarden account with the same email address instead of
+      creating a new account. Defaults to true.
+  env_vars:
+    name: Additional environment variables
+    description: >-
+      A list of name/value pairs of additional environment variables to
+      pass to Vaultwarden. This allows setting any Vaultwarden
+      configuration option (including any SSO option) that does not have
+      a dedicated option in this app. These override all other options.
 network:
   7277/tcp: Web interface

@@ -8,6 +8,8 @@ declare admin_token
 declare log_level
 declare request_size_limit
 declare secret_key
+declare env_var_name
+declare env_var_value
 
 # Set defaults
 export DATA_FOLDER=/data
@@ -71,6 +73,70 @@ if bashio::config.has_value 'request_size_limit'; then
     request_size_limit=$(bashio::config 'request_size_limit')
     export ROCKET_LIMITS="{json=${request_size_limit}}"
 fi
+
+# Public domain of this Vaultwarden instance (required for SSO)
+if bashio::config.has_value 'domain'; then
+    DOMAIN=$(bashio::config 'domain')
+    export DOMAIN
+fi
+
+# SSO / OpenID Connect
+if bashio::config.true 'sso_enabled'; then
+    bashio::config.require 'domain' \
+        "SSO requires the 'domain' option to be set to the public URL of this instance"
+    bashio::config.require 'sso_authority' \
+        "SSO is enabled, but no 'sso_authority' is configured"
+    bashio::config.require 'sso_client_id' \
+        "SSO is enabled, but no 'sso_client_id' is configured"
+    bashio::config.require 'sso_client_secret' \
+        "SSO is enabled, but no 'sso_client_secret' is configured"
+
+    export SSO_ENABLED=true
+    SSO_AUTHORITY=$(bashio::config 'sso_authority')
+    export SSO_AUTHORITY
+    SSO_CLIENT_ID=$(bashio::config 'sso_client_id')
+    export SSO_CLIENT_ID
+    SSO_CLIENT_SECRET=$(bashio::config 'sso_client_secret')
+    export SSO_CLIENT_SECRET
+
+    if bashio::config.has_value 'sso_scopes'; then
+        SSO_SCOPES=$(bashio::config 'sso_scopes')
+        export SSO_SCOPES
+    fi
+
+    if bashio::config.has_value 'sso_allow_unknown_email_verification'; then
+        SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION=$(bashio::config 'sso_allow_unknown_email_verification')
+        export SSO_ALLOW_UNKNOWN_EMAIL_VERIFICATION
+    fi
+
+    if bashio::config.has_value 'sso_client_cache_expiration'; then
+        SSO_CLIENT_CACHE_EXPIRATION=$(bashio::config 'sso_client_cache_expiration')
+        export SSO_CLIENT_CACHE_EXPIRATION
+    fi
+
+    if bashio::config.has_value 'sso_only'; then
+        SSO_ONLY=$(bashio::config 'sso_only')
+        export SSO_ONLY
+    fi
+
+    if bashio::config.has_value 'sso_signups_match_email'; then
+        SSO_SIGNUPS_MATCH_EMAIL=$(bashio::config 'sso_signups_match_email')
+        export SSO_SIGNUPS_MATCH_EMAIL
+    fi
+
+    bashio::log.info 'SSO (OpenID Connect) is enabled'
+else
+    export SSO_ENABLED=false
+fi
+
+# Additional environment variables, for any other Vaultwarden setting.
+# These are applied last, and therefore override any of the above.
+for var in $(bashio::config 'env_vars|keys'); do
+    env_var_name=$(bashio::config "env_vars[${var}].name")
+    env_var_value=$(bashio::config "env_vars[${var}].value")
+    bashio::log.info "Setting environment variable: ${env_var_name}"
+    export "${env_var_name}=${env_var_value}"
+done
 
 # Run the Vaultwarden server
 bashio::log.info 'Starting the Vaultwarden server...'

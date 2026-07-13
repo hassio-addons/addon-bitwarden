@@ -51,6 +51,17 @@ ssl: false
 certfile: fullchain.pem
 keyfile: privkey.pem
 request_size_limit: 10485760
+domain: https://vaultwarden.example.com
+sso_enabled: true
+sso_authority: https://authentik.example.com/application/o/vaultwarden/
+sso_client_id: myclientid
+sso_client_secret: myclientsecret
+sso_scopes: email profile offline_access
+sso_only: false
+sso_signups_match_email: true
+env_vars:
+  - name: SSO_PKCE
+    value: "true"
 ```
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
@@ -101,6 +112,102 @@ something smaller than that to prevent API abuse and possible DOS attack,
 especially if running with limited resources.
 
 To set the limit, you can use this setting: 10MB would be `10485760`.
+
+### Option: `domain`
+
+The public URL on which this Vaultwarden instance is reachable, e.g.,
+`https://vaultwarden.example.com`. This sets the `DOMAIN` setting of
+Vaultwarden and is **required when SSO is enabled**, since Vaultwarden
+uses it to build the OpenID Connect redirect URL
+(`<domain>/identity/connect/oidc-signin`).
+
+### Option: `sso_enabled`
+
+Enables/Disables single sign-on via OpenID Connect. Works with any
+OIDC-capable identity provider (Authentik, Keycloak, Authelia, Zitadel,
+Google, etc.). Set it `true` to enable it, `false` otherwise.
+
+When enabled, the `domain`, `sso_authority`, `sso_client_id`, and
+`sso_client_secret` options are required.
+
+**Note**: _SSO in Vaultwarden handles authentication only. The account
+master password is still used to encrypt/decrypt your vault._
+
+### Option: `sso_authority`
+
+The OpenID Connect issuer URL of your identity provider. Vaultwarden
+appends `/.well-known/openid-configuration` to this URL for discovery.
+
+For Authentik, this looks like:
+`https://authentik.example.com/application/o/<application_slug>/`
+
+### Option: `sso_client_id`
+
+The OAuth2/OpenID Connect client ID, as configured in your identity
+provider.
+
+### Option: `sso_client_secret`
+
+The OAuth2/OpenID Connect client secret, as configured in your identity
+provider.
+
+### Option: `sso_scopes`
+
+The scopes requested from the identity provider. Vaultwarden defaults to
+`email profile`. For Authentik, use `email profile offline_access` so
+refresh tokens are issued.
+
+### Option: `sso_allow_unknown_email_verification`
+
+Allow logins from identity providers that do not send the
+`email_verified` claim. Only enable this if you trust your provider to
+verify email addresses. Defaults to `false`.
+
+### Option: `sso_client_cache_expiration`
+
+Number of seconds to cache the identity provider discovery metadata.
+`0` disables caching (the default).
+
+### Option: `sso_only`
+
+Set to `true` to disable email and master password login and require SSO
+for all users. **Make sure SSO login works before enabling this**, or you
+may lock yourself out (the `/admin` panel remains reachable via the admin
+token). Defaults to `false`.
+
+### Option: `sso_signups_match_email`
+
+On a user's first SSO login, link the SSO identity to an existing
+Vaultwarden account with the same email address instead of creating a
+new account. Defaults to `true`.
+
+### Option: `env_vars`
+
+Allows the setting of any additional environment variable for
+Vaultwarden. This can be used to configure any Vaultwarden setting that
+does not have a dedicated option in this app, including all other SSO
+settings (e.g., `SSO_PKCE`, `SSO_ROLES_ENABLED`,
+`SSO_ORGANIZATIONS_ENABLED`, `SSO_AUTH_ONLY_NOT_SESSION`,
+`SSO_MASTER_PASSWORD_POLICY`, `SSO_DEBUG_TOKENS`).
+
+See the [Vaultwarden configuration documentation][vaultwarden-config] and
+the [Vaultwarden SSO documentation][vaultwarden-sso] for all available
+settings.
+
+Example:
+
+```yaml
+env_vars:
+  - name: SSO_PKCE
+    value: "true"
+  - name: SIGNUPS_ALLOWED
+    value: "false"
+```
+
+**Note**: _These environment variables are applied last and therefore
+override any of the other options above. Settings changed in the
+Vaultwarden `/admin` panel are stored in `/data/config.json` and take
+precedence over environment variables._
 
 ## Known issues and limitations
 
@@ -182,3 +289,5 @@ SOFTWARE.
 [releases]: https://github.com/hassio-addons/app-vaultwarden/releases
 [semver]: https://semver.org/spec/v2.0.0.html
 [vaultwarden]: https://github.com/dani-garcia/vaultwarden
+[vaultwarden-config]: https://github.com/dani-garcia/vaultwarden/wiki/Configuration-overview
+[vaultwarden-sso]: https://github.com/dani-garcia/vaultwarden/wiki/Enabling-SSO-support-using-OpenId-Connect

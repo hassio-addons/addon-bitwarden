@@ -19,9 +19,23 @@ options:
   ssl: true
   certfile: fullchain.pem
   keyfile: privkey.pem
+  sso_enabled: false
 schema:
   log_level: list(trace|debug|info|notice|warning|error|fatal)?
   ssl: bool
   certfile: str
   keyfile: str
   request_size_limit: int?
+  domain: url?
+  sso_enabled: bool
+  sso_authority: url?
+  sso_client_id: str?
+  sso_client_secret: password?
+  sso_scopes: str?
+  sso_allow_unknown_email_verification: bool?
+  sso_client_cache_expiration: int?
+  sso_only: bool?
+  sso_signups_match_email: bool?
+  env_vars:
+    - name: match(^[A-Za-z_][A-Za-z0-9_]*$)
+      value: str
