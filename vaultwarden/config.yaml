@@ -1,6 +1,6 @@
 ---
 name: Vaultwarden
-version: dev
+version: 0.28.0
 slug: bitwarden
 description: Open source password management solution
 url: https://github.com/myrmidondvb/app-vaultwarden
