@@ -1,36 +1,93 @@
 ---
 name: Deploy
 
-# yamllint disable-line rule:truthy
 on:
   push:
     branches:
       - main
-  release:
-    types:
-      - published
+  workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
+  packages: write
+
+env:
+  IMAGE_NAME: ghcr.io/myrmidondvb/bitwarden
+  BUILD_FROM: ghcr.io/hassio-addons/debian-base:9.3.0
 
 jobs:
-  ci:
-    permissions:
-      actions: read
-      contents: write
-      packages: read
-      pull-requests: read
-      security-events: write
-    uses: hassio-addons/workflows/.github/workflows/app-ci.yaml@3846ae0fd09acec8ac1ac308ceacd052b9d01bec # v2.0.6
-    with:
-      slug: "bitwarden"
+  # Renovate merges a pin bump on its own, and that push lands here before
+  # stamp.yaml has raised the add-on version. Publishing at that moment would
+  # push a different Vaultwarden under a tag that already exists. Wait for the
+  # stamp instead — it dispatches this workflow once the two agree.
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      publish: ${{ steps.consistency.outputs.publish }}
+      version: ${{ steps.consistency.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the pin against the changelog
+        id: consistency
+        run: |
+          version=$(sed -n 's|^version: \(.*\)$|\1|p' vaultwarden/config.yaml)
+          pinned=$(sed -n \
+            's|^FROM "vaultwarden/server:\(.*\)" AS vaultwarden$|\1|p' \
+            vaultwarden/Dockerfile)
+          shipped=$(sed -n \
+            's|^- .* Update Vaultwarden to \([0-9][0-9.]*\)$|\1|p' \
+            vaultwarden/CHANGELOG.md | head -n1)
+
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          if [[ "${pinned}" == "${shipped}" ]]; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            echo "Publishing add-on ${version} (Vaultwarden ${pinned})." \
+              >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Pinned ${pinned} but ${shipped} is released; waiting for Stamp"
+            echo "Skipped: add-on ${version} still ships ${shipped}, pin is ${pinned}." \
+              >> "$GITHUB_STEP_SUMMARY"
+          fi
 
   deploy:
-    needs: ci
-    permissions:
-      contents: read
-      packages: write
-    uses: hassio-addons/workflows/.github/workflows/app-deploy.yaml@3846ae0fd09acec8ac1ac308ceacd052b9d01bec # v2.0.6
-    with:
-      slug: "bitwarden"
-    secrets:
-      DISPATCH_TOKEN: ${{ secrets.DISPATCH_TOKEN }}
+    needs: check
+    if: needs.check.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read add-on version
+        id: addon
+        run: |
+          version=$(yq -r '.version' vaultwarden/config.yaml)
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-qemu-action@v3
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: vaultwarden
+          platforms: linux/amd64,linux/arm64
+          build-args: |
+            BUILD_FROM=${{ env.BUILD_FROM }}
+            BUILD_DATE=${{ github.event.repository.updated_at }}
+            BUILD_DESCRIPTION=Open source password management solution
+            BUILD_NAME=Vaultwarden
+            BUILD_REF=${{ github.sha }}
+            BUILD_REPOSITORY=${{ github.repository }}
+            BUILD_VERSION=${{ steps.addon.outputs.version }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME }}:${{ steps.addon.outputs.version }}
+          push: true
