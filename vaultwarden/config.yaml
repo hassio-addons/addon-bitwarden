@@ -8,7 +8,6 @@ image: ghcr.io/myrmidondvb/bitwarden
 webui: "[PROTO:ssl]://[HOST]:[PORT:7277]"
 init: false
 arch:
-  - aarch64
   - amd64
 ports:
   7277/tcp: 7277
